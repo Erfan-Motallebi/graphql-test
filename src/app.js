@@ -1,5 +1,6 @@
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
+const { schema } = require("./graphql");
 
 // Graphql-JS approaches + graphql-tools
 
