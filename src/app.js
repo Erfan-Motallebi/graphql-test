@@ -1,8 +1,19 @@
-const app = require("./server");
+const express = require("express");
+const { graphqlHTTP } = require("express-graphql");
 
-const PORT = process.env.PORT || 4000;
-const HOST = process.env.HOST || "localhost";
+// Graphql-JS approaches + graphql-tools
 
-app.listen(PORT, HOST, () => {
-  console.log(`Server is running on http://${HOST}:${PORT}/graphql`);
-});
+// Express-graphql Approaches
+// const { schema } = require("./graphql/expressGql");
+
+const app = express();
+
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+  })
+);
+
+module.exports = app;

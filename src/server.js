@@ -1,14 +1,8 @@
-const express = require("express");
-const { graphqlHTTP } = require("express-graphql");
+const app = require("./app");
 
-const app = express();
+const PORT = process.env.PORT || 4001;
+const HOST = process.env.HOST || "localhost";
 
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-  })
-);
-
-module.exports = app;
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running on http://${HOST}:${PORT}/graphql`);
+});
