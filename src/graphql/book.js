@@ -12,6 +12,7 @@ const typeDefs = gql`
 
   type Query {
     books: [Book!]!
+    book(authorId: ID!): [Book!]
   }
 `;
 
@@ -19,6 +20,10 @@ const resolvers = {
   Query: {
     books: (src, args, ctx, info) => {
       return bookz;
+    },
+    book: (src, args, ctx, info) => {
+      const { authorId } = args;
+      return bookz.filter((book) => book.authorId === authorId);
     },
   },
 };
