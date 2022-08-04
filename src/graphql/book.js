@@ -1,5 +1,5 @@
 const { default: gql } = require("graphql-tag");
-const { bookz } = require("../data/db");
+const { bookz, authorz } = require("../data/db");
 
 const typeDefs = gql`
   type Book {
@@ -8,6 +8,13 @@ const typeDefs = gql`
     genre: String!
     yearOfRelease: Int!
     authorId: Int!
+    author: Author!
+  }
+
+  type Author {
+    id: ID!
+    name: String!
+    age: Int!
   }
 
   type Query {
@@ -24,6 +31,13 @@ const resolvers = {
     book: (src, args, ctx, info) => {
       const { authorId } = args;
       return bookz.filter((book) => book.authorId === authorId);
+    },
+  },
+
+  Book: {
+    author: (parent = src, args, ctx, info) => {
+      const { authorId: parentAuthorId } = parent;
+      return authorz.find((author) => author.id === parentAuthorId);
     },
   },
 };
