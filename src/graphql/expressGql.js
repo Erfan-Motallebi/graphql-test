@@ -50,6 +50,17 @@ const rootQuery = new GraphQLObjectType({
         return authorz;
       },
     },
+    book: {
+      type: new GraphQLList(BookType),
+      description: "a list of books using authorId",
+      args: {
+        authorId: { type: GraphQLID },
+      },
+      resolve: async (src, args, ctx, info) => {
+        const { authorId } = args;
+        return bookz.filter((book) => book.authorId === authorId);
+      },
+    },
   },
 });
 
