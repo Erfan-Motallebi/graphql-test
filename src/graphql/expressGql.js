@@ -19,6 +19,15 @@ const BookType = new GraphQLObjectType({
     genre: { type: GraphQLString },
     yearOfRelease: { type: GraphQLInt },
     authorId: { type: GraphQLID },
+    author: {
+      type: AuthorType,
+      description: "an author through AuthorId ofthe book",
+      args: {},
+      resolve: async (parent = src, args, ctx, info) => {
+        const { authorId: parentAuthorId } = parent;
+        return authorz.find((author) => author.id === parentAuthorId);
+      },
+    },
   }),
 });
 
