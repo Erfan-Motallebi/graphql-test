@@ -1,6 +1,7 @@
 const { mergeResolvers, mergeTypeDefs } = require("@graphql-tools/merge");
 const {
   makeExecutableSchema,
+  // used for .gql files
   addResolversToSchema,
 } = require("@graphql-tools/schema");
 const { typeDefs: bookTypeDefs, resolvers: bookResolvers } = require("./book");
@@ -8,6 +9,8 @@ const {
   typeDefs: authorTypeDefs,
   resolvers: authorResolvers,
 } = require("./author");
+
+// used for gql files
 const { loadSchemaSync } = require("@graphql-tools/load");
 
 const path = require("node:path");
