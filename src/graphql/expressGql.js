@@ -19,6 +19,15 @@ const BookType = new GraphQLObjectType({
     genre: { type: GraphQLString },
     yearOfRelease: { type: GraphQLInt },
     authorId: { type: GraphQLID },
+    author: {
+      type: AuthorType,
+      description: "an author through AuthorId ofthe book",
+      args: {},
+      resolve: async (parent = src, args, ctx, info) => {
+        const { authorId: parentAuthorId } = parent;
+        return authorz.find((author) => author.id === parentAuthorId);
+      },
+    },
   }),
 });
 
@@ -48,6 +57,17 @@ const rootQuery = new GraphQLObjectType({
       args: {},
       resolve: async (parent, args, ctx, info) => {
         return authorz;
+      },
+    },
+    book: {
+      type: new GraphQLList(BookType),
+      description: "a list of books using authorId",
+      args: {
+        authorId: { type: GraphQLID },
+      },
+      resolve: async (src, args, ctx, info) => {
+        const { authorId } = args;
+        return bookz.filter((book) => book.authorId === authorId);
       },
     },
   },

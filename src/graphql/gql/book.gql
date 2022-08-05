@@ -1,0 +1,14 @@
+# Author is imported automatically through .graphql / .gql files
+type Book {
+  id: ID!
+  name: String!
+  genre: String!
+  yearOfRelease: Int!
+  authorId: Int!
+  author: Author!
+}
+
+type Query {
+  books: [Book!]!
+  book(authorId: ID!): [Book!]
+}
