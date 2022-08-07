@@ -1,6 +1,7 @@
 const { describe, it, expect } = require("@jest/globals");
-const { got } = require("got");
-const { GET_ALL_BOOKS_QUERY } = require("../../queries/book");
+// const { got } = require("got");
+const fetch = require("node-fetch");
+const { GET_ALL_BOOKS_QUERY } = require("../queries/book");
 
 const baseURL = `http://localhost:4001/graphql`;
 

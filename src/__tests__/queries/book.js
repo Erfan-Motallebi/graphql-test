@@ -1,4 +1,4 @@
-const { default: gql } = require("graphql-tag");
+const { gql } = require("graphql-tag");
 
 const GET_ALL_BOOKS_QUERY = gql`
   query getAllBooks {
