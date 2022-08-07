@@ -1,12 +1,12 @@
-const { describe, it } = require("@jest/globals");
+const { describe, it, expect } = require("@jest/globals");
 const { got } = require("got");
-const { GET_ALL_BOOKS_QUERY } = require("../queries/book.query");
+const { GET_ALL_BOOKS_QUERY } = require("../../queries/book");
 
-const baseURL = `http://localhost:4000/graphql`;
+const baseURL = `http://localhost:4001/graphql`;
 
 describe("Query Tests", () => {
-  it("should see a list of books", async () => {
-    const listOfBooks = await got(baseURL, {
+  test("should see a list of books", async () => {
+    const listOfBooks = await fetch(baseURL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,5 +19,7 @@ describe("Query Tests", () => {
     });
 
     console.log(listOfBooks);
+
+    expect(listOfBooks).toHaveLength(3);
   });
 });
