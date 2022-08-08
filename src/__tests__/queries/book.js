@@ -5,8 +5,8 @@ const GET_ALL_BOOKS_QUERY = gql`
     books {
       id
       name
-      yearsOfRelease
       authorId
+      yearOfRelease
       author
     }
   }
