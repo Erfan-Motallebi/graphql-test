@@ -1,4 +1,3 @@
-
 /**
  * @function fetchQuery
  * @param {string} url - the graphql URL
