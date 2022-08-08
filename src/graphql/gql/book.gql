@@ -12,3 +12,17 @@ type Query {
   books: [Book!]!
   book(authorId: ID!): [Book!]
 }
+
+# Fragments
+
+fragment BookOutput on Book {
+  id
+  name
+  authorId
+  yearOfRelease
+  author {
+    id
+    name
+    age
+  }
+}
