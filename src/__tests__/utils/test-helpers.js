@@ -7,21 +7,22 @@
  * @return {Object} data - the result of the under-mentioned function after fetching
  * */
 async function fetchQuery(url, query, variables = {}, operationName = null) {
-    return await (await fetch(url, {
-        method: "POST",
-        headers: {
-            'Content-Type': "application/json",
-            'Accept': "application/json"
-        },
-        body: JSON.stringify({
-            query,
-            variables,
-            operationName
-        })
-    })).json()
+  return await (
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        variables,
+        operationName,
+      }),
+    })
+  ).json();
 }
-
 
 module.exports = {
-    fetchQuery
-}
+  fetchQuery,
+};
