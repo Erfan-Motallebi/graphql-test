@@ -43,6 +43,20 @@ describe("Query Tests", () => {
       queryVars,
       undefined
     );
-    console.log(data);
+    // check the length of the query [2]
+    expect(data.book).toHaveLength(2);
+
+    // check book [ 0 ]
+    expect(data).toHaveProperty("book[0]", {
+      id: "1",
+      name: "Winner of the PULITZER PRIZE",
+      genre: "Novel",
+      yearOfRelease: 1960,
+      author: {
+        id: "1",
+        name: "Harper Lee",
+        age: 54,
+      },
+    });
   });
 });
