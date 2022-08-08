@@ -1,16 +1,21 @@
-const { gql } = require("graphql-tag");
 
-const GET_ALL_BOOKS_QUERY = gql`
+const GET_ALL_BOOKS_QUERY = `#graphql
   query getAllBooks {
     books {
       id
       name
       authorId
       yearOfRelease
-      author
+      author {
+        id
+        name
+        age
+      }
     }
   }
 `;
+
+
 
 module.exports = {
   GET_ALL_BOOKS_QUERY,
