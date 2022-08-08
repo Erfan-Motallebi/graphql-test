@@ -44,9 +44,11 @@ describe("Query Tests", () => {
       undefined
     );
     // check the length of the query [2]
+    expect(data.books).toBeUndefined();
     expect(data.book).toHaveLength(2);
 
     // check book [ 0 ]
+    expect(data.book).toBeDefined();
     expect(data).toHaveProperty("book[0]", {
       id: "1",
       name: "Winner of the PULITZER PRIZE",
