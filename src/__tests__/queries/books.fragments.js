@@ -1,13 +1,12 @@
-const {disableFragmentWarnings} = require('graphql-tag')
+const { disableFragmentWarnings } = require("graphql-tag");
 
-disableFragmentWarnings()
+disableFragmentWarnings();
 
 const booksListFragment = `#graphql
 fragment BookOutputs on Query {
     books {
         id
         yearOfRelease
-        genre
         name
         authorId
         author {
@@ -33,10 +32,9 @@ fragment bookByAuthorIdOutputs on Query {
         }
     }
 }
-`
-
+`;
 
 module.exports = {
-    booksListFragment,
-    bookByAuthorIdFragment
-}
+  booksListFragment,
+  bookByAuthorIdFragment,
+};
