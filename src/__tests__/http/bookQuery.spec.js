@@ -1,27 +1,17 @@
-const { describe, test, it, beforeAll } = require("@jest/globals");
+const { describe, test, it } = require("@jest/globals");
 // adding the fetch globally to make a use of
 require('isomorphic-fetch')
 const { GET_ALL_BOOKS_QUERY } = require("../queries/book.query");
 const {fetchQuery} = require("../utils/test-helpers");
-const url = require("url");
-const {booksFragment} = require("../queries/books.fragments");
 
 const baseURL = 'http://localhost:4000/graphql';
 
 
 describe("Query Tests", () => {
 
-    // a List of books
-    let data;
-
-    beforeAll(async () => {
-        let {data: bookQuery} = await fetchQuery(baseURL, GET_ALL_BOOKS_QUERY, undefined, undefined);
-        data = bookQuery
-    }, 5000)
-
   test("should see a list of books ", async () => {
     try {
-
+        const { data } = await fetchQuery(baseURL, GET_ALL_BOOKS_QUERY, undefined, undefined);
         // Check sections
         expect(data.books).toHaveLength(7)
 
