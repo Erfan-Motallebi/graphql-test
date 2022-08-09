@@ -9,13 +9,14 @@ const { fetchQuery } = require("../utils/test-helpers");
 const baseURL = `http://localhost:4000/graphql`;
 
 describe("Query Tests", () => {
-  test.skip("should see a list of books", async () => {
+  test("should see a list of books", async () => {
     const { data } = await fetchQuery(
       baseURL,
       GET_ALL_BOOKS_QUERY,
       undefined,
       undefined
     );
+
     // check length of thy books query
     expect(data.books).toHaveLength(7);
 
@@ -44,5 +45,6 @@ describe("Query Tests", () => {
       undefined
     );
     console.log(data);
+    expect(data.book).toHaveLength(2);
   });
 });
