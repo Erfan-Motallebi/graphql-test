@@ -44,7 +44,6 @@ describe("Query Tests", () => {
       queryVars,
       undefined
     );
-    console.log(data);
 
     // the existence of book
     expect(data).toBeDefined();
