@@ -2,6 +2,7 @@ require("isomorphic-fetch");
 const { fetchQuery } = require("../utils/test-helpers");
 const { GET_ALL_AUTHORS_QUERY } = require("../queries/author/queries");
 const { expect } = require("@jest/globals");
+const { allSchema } = require("../../graphql");
 
 const baseURL = `http://localhost:4000/graphql`;
 
@@ -20,5 +21,13 @@ describe("Author Query Test", () => {
 
     // check the length of author [ 2 ]
     expect(data.authors).toHaveLength(3);
+  });
+});
+
+describe("Author Schema Test", () => {
+  test("should see an author schema type", () => {
+    // check book schema type
+    expect(allSchema.getType("Author")).toBeDefined();
+    expect(allSchema.getType("Author")).not.toBeNull();
   });
 });
