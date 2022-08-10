@@ -19,6 +19,6 @@ describe("Author Query Test", () => {
     expect(data.authors).toBeDefined();
 
     // check the length of author [ 2 ]
-    expect(data.authors).toHaveLength(2);
+    expect(data.authors).toHaveLength(3);
   });
 });

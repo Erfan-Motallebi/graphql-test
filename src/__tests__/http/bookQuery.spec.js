@@ -1,5 +1,6 @@
 require("isomorphic-fetch");
 const { describe, it, expect, test } = require("@jest/globals");
+const { allSchema } = require("../../graphql");
 const {
   GET_ALL_BOOKS_QUERY,
   GET_BOOK_BY_AUTHORID_QUERY,
@@ -52,5 +53,13 @@ describe("Query Tests", () => {
 
     // length of data.book [ 2 ]
     expect(data.book).toHaveLength(2);
+  });
+});
+
+describe("Book Schema Test", () => {
+  test("should see a book schema type", () => {
+    // check book schema type
+    expect(allSchema.getType("Book")).toBeDefined();
+    expect(allSchema.getType("Book")).not.toBeNull();
   });
 });
