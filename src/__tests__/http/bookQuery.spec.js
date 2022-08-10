@@ -3,7 +3,7 @@ const { describe, it, expect, test } = require("@jest/globals");
 const {
   GET_ALL_BOOKS_QUERY,
   GET_BOOK_BY_AUTHORID_QUERY,
-} = require("../queries/book");
+} = require("../queries/book/queries");
 const { fetchQuery } = require("../utils/test-helpers");
 
 const baseURL = `http://localhost:4000/graphql`;
