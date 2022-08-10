@@ -45,6 +45,13 @@ describe("Query Tests", () => {
       undefined
     );
     console.log(data);
+
+    // the existence of book
+    expect(data).toBeDefined();
+    expect(data.book).toBeDefined();
+    expect(data.book).not.toBeNull();
+
+    // length of data.book [ 2 ]
     expect(data.book).toHaveLength(2);
   });
 });
