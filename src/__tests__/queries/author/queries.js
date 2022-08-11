@@ -1,13 +1,21 @@
-const { authorsListFragments } = require("./authors.fragments");
+const {authorsListFragments, authorListByIdFragment} = require("./authors.fragments");
 
 const GET_ALL_AUTHORS_QUERY = `#graphql
-  query getAllAuthors {
+query getAllAuthors {
     ...AuthorOutputs
-  }
+}
 
-  ${authorsListFragments}
+${authorsListFragments}
 `;
 
+const GET_AUTHOR_BY_ID = `#graphql
+query getAuthorById($id: ID!) {
+    ...AuthorListByIdOutputs
+}
+${authorListByIdFragment}
+`
+
 module.exports = {
-  GET_ALL_AUTHORS_QUERY,
+    GET_ALL_AUTHORS_QUERY,
+    GET_AUTHOR_BY_ID
 };

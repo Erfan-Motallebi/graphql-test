@@ -1,21 +1,21 @@
-const { mergeResolvers, mergeTypeDefs } = require("@graphql-tools/merge");
+const {mergeResolvers, mergeTypeDefs} = require("@graphql-tools/merge");
 const {
-  makeExecutableSchema,
-  // used for .gql files
-  addResolversToSchema,
+    makeExecutableSchema,
+    // used for .gql files
+    addResolversToSchema,
 } = require("@graphql-tools/schema");
-const { typeDefs: bookTypeDefs, resolvers: bookResolvers } = require("./book");
+const {typeDefs: bookTypeDefs, resolvers: bookResolvers} = require("./book");
 const {
-  typeDefs: authorTypeDefs,
-  resolvers: authorResolvers,
+    typeDefs: authorTypeDefs,
+    resolvers: authorResolvers,
 } = require("./author");
 
 // used for gql files
-const { loadSchemaSync } = require("@graphql-tools/load");
+const {loadSchemaSync} = require("@graphql-tools/load");
 
 const path = require("node:path");
 
-const { GraphQLFileLoader } = require("@graphql-tools/graphql-file-loader");
+const {GraphQLFileLoader} = require("@graphql-tools/graphql-file-loader");
 
 // Merging all the Type Definitions
 
@@ -31,13 +31,14 @@ const resolvers = mergeResolvers([bookResolvers, authorResolvers]);
 // })
 
 const allGqlSchemas = loadSchemaSync(path.join(__dirname, "gql/**/*.gql"), {
-  loaders: [new GraphQLFileLoader()],
+    loaders: [new GraphQLFileLoader()],
 });
 
 module.exports = {
-  schema: makeExecutableSchema({
-    typeDefs,
-    resolvers,
-  }),
-  allSchema: allGqlSchemas,
+    schema: makeExecutableSchema({
+        typeDefs,
+        resolvers,
+    }),
+    allSchema: allGqlSchemas,
+    resolvers
 };
