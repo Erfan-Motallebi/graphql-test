@@ -1,11 +1,11 @@
 const {
-  bookByAuthorIdFragment,
-  booksListFragment,
+    bookByAuthorIdFragment,
+    booksListFragment,
 } = require("./books.fragments");
 
 const GET_ALL_BOOKS_QUERY = `#graphql
 query getAllBooks {
-    ...bookByAuthorIdOutputs
+    ...BookOutputs
 }
 ${booksListFragment}
 `;
@@ -19,6 +19,6 @@ ${bookByAuthorIdFragment}
 `;
 
 module.exports = {
-  GET_ALL_BOOKS_QUERY,
-  GET_BOOK_BY_AUTHORID_QUERY,
+    GET_ALL_BOOKS_QUERY,
+    GET_BOOK_BY_AUTHORID_QUERY,
 };

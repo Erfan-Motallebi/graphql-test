@@ -1,13 +1,24 @@
 const authorsListFragments = `#graphql
-  fragment AuthorOutputs on Query {
+fragment AuthorOutputs on Query {
     authors {
-      id
-      name
-      age
+        id
+        name
+        age
     }
-  }
+}
 `;
 
+
+const authorListByIdFragment = `#graphql
+fragment AuthorListByIdOutputs on Query {
+    author (id: $id){
+        id
+        name
+        age
+    }
+}
+`
 module.exports = {
-  authorsListFragments,
+    authorsListFragments,
+    authorListByIdFragment
 };
