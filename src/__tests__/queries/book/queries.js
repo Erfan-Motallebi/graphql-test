@@ -5,7 +5,7 @@ const {
 
 const GET_ALL_BOOKS_QUERY = `#graphql
 query getAllBooks {
-    ...BookOutputs
+    ...bookByAuthorIdOutputs
 }
 ${booksListFragment}
 `;
