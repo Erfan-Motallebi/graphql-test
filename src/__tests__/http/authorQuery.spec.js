@@ -3,11 +3,12 @@ const {
     GET_ALL_AUTHORS_QUERY,
     GET_AUTHOR_BY_ID,
 } = require("../queries/author/queries");
-const {expect: jestExpect, describe, test, it} = require("@jest/globals");
+const {expect: jestExpect, describe, test, afterEach, it} = require("@jest/globals");
 const {allSchema} = require("../../graphql");
+const {serverListening} = require("../../server");
 
 describe("Author Query Test", () => {
-    test("should see a list of authors", async () => {
+    it("should see a list of authors", async () => {
         const {data} = await fetchQuery(
             baseURL,
             GET_ALL_AUTHORS_QUERY,
@@ -33,6 +34,12 @@ describe("Author Schema Test", () => {
 });
 
 describe("Author Query Test using graphql-tools", function () {
+
+    afterEach(() => {
+        serverListening.close()
+    }, 5000)
+
+
     test("Authors Query test", async function () {
         const {data: authorLists} = await superTQuery(
             path,
@@ -89,6 +96,7 @@ describe("Author Query through graphql module", () => {
 
         jestExpect(data).toBeDefined()
         jestExpect(data.authors).toBeDefined()
+        jestExpect(data.authors).toBeInstanceOf(Array)
 
         jestExpect(data.authors).toHaveLength(3)
         jestExpect(data).toHaveProperty('authors[0]', {
