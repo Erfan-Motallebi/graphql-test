@@ -5,7 +5,6 @@ const {
 } = require("../queries/author/queries");
 const { expect, describe, test, it } = require("@jest/globals");
 const { allSchema } = require("../../graphql");
-const { GET_BOOK_BY_AUTHORID_QUERY } = require("../queries/book/queries");
 
 describe("Author Query Test", () => {
   test("should see a list of authors", async () => {
