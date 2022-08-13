@@ -6,5 +6,5 @@ type Author {
 
 type Query {
   authors: [Author!]!
-  author: [Author!]
+  author(id: ID!): [Author!]
 }

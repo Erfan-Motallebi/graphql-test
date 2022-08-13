@@ -16,7 +16,7 @@ const { expect: chaiExpect, assert: chaiAssert } = require("chai"),
   chai = require("chai");
 
 describe("Query Tests", () => {
-  test.skip("should see a list of books", async () => {
+  test("should see a list of books", async () => {
     const { data } = await fetchQuery(
       baseURL,
       GET_ALL_BOOKS_QUERY,
